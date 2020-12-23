@@ -22,6 +22,8 @@ dependencies {
     implementation("org.http4k:http4k-server-netty")
     implementation("org.http4k:http4k-format-jackson")
     implementation("org.http4k:http4k-client-websocket")
+    implementation("org.http4k:http4k-template-handlebars")
+
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.11+")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2")
     implementation("io.github.microutils:kotlin-logging-jvm:2.0.2")
@@ -34,6 +36,12 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach 
     kotlinOptions {
         jvmTarget = "11"
         targetCompatibility = "11"
+    }
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(11))
     }
 }
 
