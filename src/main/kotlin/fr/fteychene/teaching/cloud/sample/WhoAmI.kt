@@ -1,16 +1,13 @@
 package fr.fteychene.teaching.cloud.sample
 
 import org.http4k.core.*
+import org.http4k.format.Jackson.auto
+import org.http4k.lens.BiDiBodyLens
+import org.http4k.lens.Header.CONTENT_TYPE
 import org.http4k.routing.RoutingHttpHandler
 import org.http4k.routing.bind
 import org.http4k.routing.routes
-import org.http4k.format.Jackson.auto
-import org.http4k.lens.BiDiBodyLens
-import org.http4k.lens.Header
-import org.http4k.lens.Header.CONTENT_TYPE
-import org.http4k.template.TemplateRenderer
 import org.http4k.template.ViewModel
-import org.http4k.template.viewModel
 import java.net.InetAddress
 import java.time.Instant
 

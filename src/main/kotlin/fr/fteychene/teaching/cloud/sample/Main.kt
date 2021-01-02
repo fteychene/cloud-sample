@@ -47,13 +47,7 @@ fun main() {
         "/" bind Method.GET to {
             Response(Status.PERMANENT_REDIRECT).header("Location", "index.html")
         },
-        "/convertion" bind Method.GET to {
-            val view = Body.viewModel(templateRenderer, TEXT_HTML).toLens()
-
-            val model = Convertion(LocalDateTime.now().format(ISO_LOCAL_DATE_TIME), it.header("User-Agent") ?: "unknown")
-
-            Response(Status.OK).with(view of model)
-        },
+        "/convertion" bind Method.GET to temperature(Body.viewModel(templateRenderer, TEXT_HTML).toLens()),
         "/actuator" bind routes(
             "/info" bind Method.GET to {
                 Response(Status.OK).with(ApplicationInfoLens of applicationInfo)
