@@ -29,7 +29,7 @@ dependencies {
     implementation("io.github.microutils:kotlin-logging-jvm:2.0.2")
     implementation("org.slf4j:slf4j-api:1.7.25")
     implementation("ch.qos.logback:logback-classic:1.2.3")
-    implementation("io.r2dbc:r2dbc-postgresql:0.8.6.RELEASE")
+    implementation("org.postgresql:postgresql:42.2.18")
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {

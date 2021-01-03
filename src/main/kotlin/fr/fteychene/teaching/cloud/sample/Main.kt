@@ -42,12 +42,14 @@ fun main() {
     logger.info("Start server")
     val applicationInfo = ApplicationInfo()
     val templateRenderer = HandlebarsTemplates().CachingClasspath()
+    val templates = Body.viewModel(templateRenderer, TEXT_HTML).toLens()
     routes(
         static(ResourceLoader.Classpath("public")),
         "/" bind Method.GET to {
             Response(Status.PERMANENT_REDIRECT).header("Location", "index.html")
         },
-        "/convertion" bind Method.GET to temperature(Body.viewModel(templateRenderer, TEXT_HTML).toLens()),
+        "/convertion" bind Method.GET to temperature(templates),
+        database(templates),
         "/actuator" bind routes(
             "/info" bind Method.GET to {
                 Response(Status.OK).with(ApplicationInfoLens of applicationInfo)
@@ -56,6 +58,6 @@ fun main() {
                 Response(Status.OK).with(HealthStatusLens of HealthStatus(Instant.now(), Ok))
             }
         ),
-        whoami(Body.viewModel(templateRenderer, TEXT_HTML).toLens())
+        whoami(templates)
     ).asServer(Netty(8080)).start()
 }
