@@ -27,7 +27,7 @@ fun <R> execute(provider: () -> Connection, block: (Connection) -> R): R =
 
 fun postgres(): () -> Connection = {
     DriverManager.getConnection(
-        "jdbc:${System.getenv("POSTGRESQL_ADDON_URI")!!}",
+        "jdbc:postgresql://${System.getenv("POSTGRESQL_ADDON_HOST")!!}:${System.getenv("POSTGRESQL_ADDON_PORT")!!}/${System.getenv("POSTGRESQL_ADDON_DB")!!}",
         System.getenv("POSTGRESQL_ADDON_USER")!!,
         System.getenv("POSTGRESQL_ADDON_PASSWORD")!!
     )
