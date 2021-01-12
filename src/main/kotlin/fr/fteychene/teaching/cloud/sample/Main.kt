@@ -14,8 +14,6 @@ import org.http4k.template.ViewModel
 import org.http4k.template.viewModel
 import org.slf4j.LoggerFactory
 import java.time.Instant
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter.ISO_LOCAL_DATE_TIME
 
 val logger = LoggerFactory.getLogger("main");
 
