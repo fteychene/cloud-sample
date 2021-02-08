@@ -60,3 +60,6 @@ jib {
     }
 }
 
+tasks.register<Task>("stage") {
+    dependsOn(tasks.shadowJar)
+}
