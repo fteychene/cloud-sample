@@ -27,8 +27,8 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2")
     implementation("io.github.microutils:kotlin-logging-jvm:2.0.2")
     implementation("org.slf4j:slf4j-api:1.7.25")
-    implementation("ch.qos.logback:logback-classic:1.2.3")
-    implementation("org.postgresql:postgresql:42.2.18")
+    implementation("ch.qos.logback:logback-classic:1.5.12")
+    implementation("org.postgresql:postgresql:42.7.2")
 }
 
 java {
