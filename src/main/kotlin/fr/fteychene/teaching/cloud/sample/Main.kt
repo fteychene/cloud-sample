@@ -38,6 +38,14 @@ data class Convertion(val time: String, val browser: String) : ViewModel
 
 fun main() {
     logger.info("Start server")
+    Thread {
+        while (true) {
+            logger.info("Marco !")
+            Thread.sleep(3000)
+            logger.info(("Polo !"))
+            Thread.sleep(3000)
+        }
+    }.start();
     val applicationInfo = ApplicationInfo()
     val templateRenderer = HandlebarsTemplates().CachingClasspath()
     val templates = Body.viewModel(templateRenderer, TEXT_HTML).toLens()
