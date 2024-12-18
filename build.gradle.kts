@@ -1,8 +1,8 @@
 plugins {
-    kotlin("jvm") version "1.4.21"
+    kotlin("jvm") version "2.0.21"
     application
-    id("com.github.johnrengelman.shadow") version "6.1.0"
-    id("com.google.cloud.tools.jib") version "2.7.0"
+    id("com.github.johnrengelman.shadow") version "8.1.1"
+    id("com.google.cloud.tools.jib") version "3.4.4"
 }
 
 group = "fr.fteychene.teaching.cloud.sample"
@@ -12,12 +12,11 @@ project.setProperty("mainClassName", "fr.fteychene.teaching.cloud.sample.MainKt"
 
 repositories {
     mavenCentral()
-    jcenter()
 }
 
 dependencies {
     implementation(kotlin("stdlib"))
-    implementation(platform("org.http4k:http4k-bom:3.280.0"))
+    implementation(platform("org.http4k:http4k-bom:5.41.0.0"))
     implementation("org.http4k:http4k-core")
     implementation("org.http4k:http4k-server-netty")
     implementation("org.http4k:http4k-format-jackson")
@@ -32,22 +31,15 @@ dependencies {
     implementation("org.postgresql:postgresql:42.2.18")
 }
 
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-    kotlinOptions {
-        jvmTarget = "11"
-        targetCompatibility = "11"
-    }
-}
-
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(11))
+        languageVersion.set(JavaLanguageVersion.of(21))
     }
 }
 
 jib {
     from {
-        image = "openjdk:11-jdk-buster"
+        image = "eclipse-temurin:21"
     }
     to {
         image = "fteychene/cloud-failer"
